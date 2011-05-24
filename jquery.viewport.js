@@ -20,11 +20,8 @@
                 var  $this = $(this)
                     ,offset = $this.offset().top
                     ,height = $this.height();
-                if (scrollTop-options.buffer> (offset + height) || scrollTop + winHeight < offset-options.buffer) {
-                    $this.trigger('inViewPort', [ false ]);
-                } else {
-                    $this.trigger('inViewPort', [ true ]);
-                }
+                    ,inView = (scrollTop-options.buffer> (offset + height) || scrollTop + winHeight < offset-options.buffer) ? false : true;
+                    $this.trigger('inViewPort', [ inView ]);
             });
         }
         var callback = $.throttle
@@ -39,8 +36,8 @@
     };
 
     $.fn.viewPort.defaults = {
-         buffer: 0  //amount of extra space around viewport (use to allow smoother transitions from hidden to not-hidden)
-        ,delimitRate: 0 //rate, in milliseconds to throttle scroll event
+         buffer: 0
+        ,delimitRate: 0
     };
 
 })(jQuery);
