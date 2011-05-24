@@ -34,9 +34,8 @@
         $win.scroll(callback)
             .resize(callback)
             .click(callback);
-		
-		return this;
-		
+        
+        return this;
     };
 
     $.fn.viewPort.defaults = {
