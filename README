@@ -7,13 +7,13 @@ function myHandler(e, data) {
     console.log(data); //will return true or false depending on whether the element is in view
 }
 
-$('.thumbs').live('inViewPort', myHandler)
+$('.thumb').live('inViewPort', myHandler)
             .viewPort();
             
             
 Advanced options:
 
-$('.thumbs').live('inViewPort', myHandler)
+$('.thumb').live('inViewPort', myHandler)
             .viewPort({
                  buffer: 300      
                 ,delimitRate: 200
