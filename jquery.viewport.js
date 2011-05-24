@@ -27,15 +27,13 @@
                 }
             });
         }
-        if(jQuery.throttle) {
-            $win.scroll($.throttle(options.delimitRate, inViewPort))
-                .resize($.throttle(options.delimitRate, inViewPort))
-                .click($.throttle(options.delimitRate, inViewPort));
-        } else {
-            $win.scroll(inViewPort)
-                .resize(inViewPort)
-                .click(inViewPort);
-        }
+        var callback = $.throttle
+                     ? $.throttle(options.delimitRate, inViewPort)
+                     : inViewPort;
+
+        $win.scroll(callback)
+            .resize(callback)
+            .click(callback);
     };
 
     $.fn.viewPort.defaults = {
