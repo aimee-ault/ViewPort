@@ -1,0 +1,23 @@
+ViewPort is a plugin for jQuery that helps you detect whether a given set of DOM nodes are visible within the browser viewport at any given moment.
+This plugin attaches scroll, resize, and click event handlers to the window node. Because of this, there is an optional dependency on Ben Alman's Throttle/Debounce jQuery plugin.
+
+Example of how to use ViewPort:
+
+function myHandler(e, data) {
+    console.log(data); //will return true or false depending on whether the element is in view
+}
+
+$('.thumbs').live('inViewPort', myHandler)
+            .viewPort();
+            
+            
+Advanced options:
+
+$('.thumbs').live('inViewPort', myHandler)
+            .viewPort({
+                 buffer: 300      
+                ,delimitRate: 200
+            });
+
+* buffer is the amount of additional padding around the viewport that will also be considered visible in the viewport. This is useful if you are using animations or unloading elements and want your transition to feel smooth.
+* delimitRate is the amount of time in milliseconds that the scroll, resize, and click event handlers on window will be throttled if you are using Ben Alman's Throttle plugin. If you are not using this plugin, your event handlers will not be throttled.
