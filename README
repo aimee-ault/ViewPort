@@ -10,8 +10,7 @@ function myHandler(e, data) {
 $('.thumb').viewPort({
                  buffer: 300      
                 ,delimitRate: 200
-                ,callback: myHandler
-            });
+            }, myHandler);
 
 * buffer is the amount of additional padding around the viewport that will also be considered visible in the viewport. This is useful if you are using animations or unloading elements and want your transition to feel smooth.
 * delimitRate is the amount of time in milliseconds that the scroll, resize, and click event handlers on window will be throttled if you are using Ben Alman's Throttle plugin. If you are not using this plugin, your event handlers will not be throttled.
