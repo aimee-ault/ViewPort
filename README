@@ -5,19 +5,15 @@ Example of how to use ViewPort:
 
 function myHandler(e, data) {
     console.log(data); //will return true or false depending on whether the element is in view
-}
-
-$('.thumb').live('inViewPort', myHandler)
-            .viewPort();
-            
-            
-Advanced options:
+}            
 
 $('.thumb').live('inViewPort', myHandler)
             .viewPort({
                  buffer: 300      
                 ,delimitRate: 200
+                ,callback: myHandler
             });
 
 * buffer is the amount of additional padding around the viewport that will also be considered visible in the viewport. This is useful if you are using animations or unloading elements and want your transition to feel smooth.
 * delimitRate is the amount of time in milliseconds that the scroll, resize, and click event handlers on window will be throttled if you are using Ben Alman's Throttle plugin. If you are not using this plugin, your event handlers will not be throttled.
+* callback is your own event handler for the node. a data object is passed back to the handler which returns true or false depending on whether the element is within the viewport.

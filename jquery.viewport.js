@@ -10,6 +10,8 @@
         
         options = $.extend({}, $.fn.viewPort.defaults, options);
         
+        $nodes.live('inViewPort', options.callback);
+        
         function inViewPort() {
             var  winHeight = $win.height()
                 ,scrollTop = $win.scrollTop();
@@ -39,6 +41,9 @@
     $.fn.viewPort.defaults = {
          buffer: 0  //amount of extra space around viewport (use to allow smoother transitions from hidden to not-hidden)
         ,delimitRate: 0 //rate, in milliseconds to throttle scroll event
+        ,callback: function () {
+            return;
+        }
     };
 
 })(jQuery);
