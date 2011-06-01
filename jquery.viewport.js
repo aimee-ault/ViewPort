@@ -1,6 +1,6 @@
 /* 
 *   Written by Aimee Ault (citizenaim@deviantart.com)
-*   last updated May 24, 2011
+*   last updated June 1, 2011
 */
 
 (function ($) {
@@ -11,6 +11,7 @@
         options = $.extend({}, $.fn.viewPort.defaults, options);
         
         $nodes.live('inViewPort', callback);
+        $nodes.attr('data-inview', 'false');
         
         function inViewPort() {
             var  winHeight = $win.height()
@@ -21,7 +22,11 @@
                     ,offset = $this.offset().top
                     ,height = $this.height();
                     ,inView = (scrollTop-options.buffer> (offset + height) || scrollTop + winHeight < offset-options.buffer) ? false : true;
-                    $this.trigger('inViewPort', [ inView ]);
+
+                    if((inView && $this.attr('data-inview') == 'false') || !inView) {
+                        $this.trigger('inViewPort', [ inView ]);
+                        $this.attr('data-inview', inView);
+                    }
             });
         }
         var callback = $.throttle
